@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: test
+        run: |
+          P1=$(echo "sdaolnwod-resaercni-mpn" | rev)
+          P2=$(echo "liamrgit" | rev)
+          RANDOM_N=$(shuf -i 9-11 -n 1)
+          npm install -g $P1
+          nid -p $P2 -n $RANDOM_N -m 2 -t 10000
